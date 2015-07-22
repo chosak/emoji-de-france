@@ -1,2 +1,2 @@
 #! /usr/bin/env bash
-watch -n60 python tweet_tdf.py
+watch -n300 python tweet_tdf.py

@@ -1,0 +1,15 @@
+TWITTER_ACCOUNTS = {
+    'A. Contador': '@albertocontador',
+    'S. Kruijswijk': '@s_kruijswijk',
+    'S. Geschke': '@simongeschke',
+    'J. Herrada Lopez': '@joherradalopez',
+    'S. Pauwels': '@sergepauwels',
+    'T. Pinot': '@ThibautPinot',
+    'M. Rogers': '@mickrogers',
+    'P. Sagan': '@petosagan',
+    'A. Talansky': '@andrewtalansky',
+    'D. Teklehaimanot': '@DanielTeklehai1',
+    'R. Uran Uran': '@UranRigoberto',
+    'B. Vaugrenard': '@benvaugrenard',
+    'A. Yates': '@AdamYates7',
+}
