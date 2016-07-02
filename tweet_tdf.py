@@ -9,8 +9,9 @@ from twitter_accounts import TWITTER_ACCOUNTS
 
 MAX_TWEET_LENGTH = 140
 SHOW_GROUPS = False
+YEAR = 2016
 
-HASHTAG = '#TDF2015'
+HASHTAG = '#TDF{}'.format(YEAR)
 
 EMOJIS = {
     'smile': '\U0001f604',
@@ -28,18 +29,17 @@ JERSEYS = {
 }
 
 
+def req(path):
+    base_url = 'http://www.letour.fr/useradgents/{}/json/'.format(YEAR)
+    return requests.get(base_url + path).json()
+
+
 def get_status():
-    state = requests.get(
-        'http://www.letour.fr/useradgents/2015/json/appState.json'
-    ).json()
+    state = req('appState.json')
     stage = state['stage']
 
     riders_version = state['jsonVersions']['starters']
-    riders = requests.get(
-        'http://www.letour.fr/useradgents/2015/json/starters.{}.json'.format(
-            riders_version
-        )
-    ).json()
+    riders = req('starters.{}.json'.format(riders_version))
 
     riders = {
         r['n']: {
@@ -49,14 +49,7 @@ def get_status():
         } for r in riders['r']
     }
 
-    #for v in sorted(riders.values(), key=lambda k: k['last']):
-    #    print(v['first'] + ' ' + v['last'] + ' ' + v['name'])
-
-    live = requests.get(
-        'http://www.letour.fr/useradgents/2015/json/livestage{}.json'.format(
-            stage
-        )
-    ).json()
+    live = req('livestage{}.json'.format(stage))
 
     km_covered = live['kp']
     km_remaining = live['kr']
